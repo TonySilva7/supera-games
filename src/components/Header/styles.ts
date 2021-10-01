@@ -5,7 +5,7 @@ export const WrapperHeader = styled.header`
 	align-items: center;
 	justify-content: space-between;
 
-	width: auto;
+	width: 100vw;
 	height: 8rem;
 	padding: 0 2rem;
 
@@ -14,7 +14,7 @@ export const WrapperHeader = styled.header`
 	background: linear-gradient(89.47deg, rgba(102, 115, 126, 0.49) 0%, rgba(52, 52, 52, 0.82) 100%);
 
 	& > svg:nth-child(1) {
-		width: 16rem;
+		width: 18rem;
 	}
 
 	div {
