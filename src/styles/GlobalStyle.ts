@@ -7,7 +7,20 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   
+  :root {
+    --white: #F0F6FF;
+    --dark: #343434;
+    --orange: #FA9C7F;
+    --blue: #7AAFFF;
+    --green: #C4F684;
+    --green-light: #ECF7EA;
+    
+    --brown-gradient: linear-gradient(175.16deg, rgba(184, 191, 167, 0.61) 0%, rgba(111, 89, 77, 0.71) 80.95%);
+    --gray-gradient: linear-gradient(128.61deg, rgba(192, 188, 185, 0.71) 6.15%, #232633 73.24%);
+  }
+  
   html {
+    background: darkgray;
     font-size: 62.5%;
     box-sizing: border-box;
     
