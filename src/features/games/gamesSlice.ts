@@ -28,7 +28,7 @@ export const gamesSlice = createSlice({
 	extraReducers: (builder) => {},
 });
 
-export const {} = gamesSlice.actions;
+// export const {} = gamesSlice.actions;
 
 export const selectGames = (state: RootState) => state.games;
 
