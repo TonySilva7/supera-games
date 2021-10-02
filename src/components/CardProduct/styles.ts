@@ -84,11 +84,11 @@ export const Wrapper = styled.article`
 				height: 4rem;
 				border-radius: 50%;
 				transition: var(--boomerang);
-			}
 
-			input:hover {
-				box-shadow: inset var(--shadow);
-				box-shadow: inset var(--shadow);
+				&:hover {
+					box-shadow: inset var(--shadow);
+					box-shadow: inset var(--shadow);
+				}
 			}
 		}
 	}
@@ -105,7 +105,8 @@ export const MyButton = styled.button`
 	font-size: 1.8rem;
 	padding: 1rem 3.5rem;
 	border-radius: 50rem;
-	background-color: var(--blue);
+	/* background-color: var(--blue); */
+	background: linear-gradient(171deg, rgb(122 175 255), rgba(122, 175, 255, 0.8));
 	color: var(--white);
 
 	transition: all 400ms ease;
@@ -113,17 +114,20 @@ export const MyButton = styled.button`
 	&:before {
 		content: 'Adicionar';
 		position: absolute;
-		color: rgb(0, 0, 0, 0.5);
+
+		color: var(--blue);
 		top: 0;
-		left: -13rem;
-		background: var(--green);
-		padding: 1rem 3.5rem;
+		left: -11rem;
+		background: rgb(226 237 255);
+		padding: 0.8rem 2.3rem;
 		border-radius: 50rem;
+		border: solid 2px rgb(160 198 255);
+		box-shadow: inset 0px 0px 11px 3px rgb(0 0 0 / 18%);
 
 		transition: var(--boomerang);
 	}
 
 	&:hover:before {
-		left: -1rem;
+		left: 1rem;
 	}
 `;

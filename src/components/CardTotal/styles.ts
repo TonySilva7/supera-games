@@ -1,4 +1,21 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const cartAnimation = keyframes`
+	0 {
+		transform: scale(1);
+		z-index: 1;
+	}
+	50% {
+		transform: scale(1.2);
+		box-shadow: var(--shadow);
+		z-index: 2;
+	}
+	100% {
+		transform: scale(1);
+		z-index: 2;
+		margin-right: 4rem;
+	}
+`;
 
 export const CardTotalWrapper = styled.div`
 	display: flex;
@@ -71,21 +88,81 @@ export const CardTotalWrapper = styled.div`
 			color: var(--green);
 		}
 	}
+`;
 
-	& > button {
+export const MyButton = styled.button`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+
+	width: 30rem;
+	height: 5rem;
+	margin-top: 1rem;
+	font-size: 2rem;
+	font-weight: bold;
+	box-shadow: var(--shadow);
+	border-radius: 50rem;
+	color: #7ba941;
+	background-color: var(--green-light);
+
+	transition: all 700ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+	&:before {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		content: 'Confirmar';
+		position: absolute;
 
-		cursor: pointer;
-		width: 30rem;
+		width: 25rem;
 		height: 5rem;
-		margin-top: 1rem;
-		font-size: 2rem;
-		font-weight: bold;
-		box-shadow: var(--shadow);
+		top: 0;
+		bottom: 0;
+		left: -22rem;
 		border-radius: 50rem;
-		color: #7ba941;
-		background-color: var(--green-light);
+		border: solid 2px var(--green-light);
+		box-sizing: border-box;
+		box-shadow: inset 0px 0px 11px 3px #0000002e;
+		color: #7cab3f;
+		background: linear-gradient(45deg, #c4f684, #edffd6);
+
+		transition: var(--boomerang);
+	}
+
+	&:hover:before {
+		left: 2rem;
+	}
+
+	p {
+		margin-left: 4rem;
+	}
+
+	&:hover {
+		span {
+			/* animation: name duration timing-function delay iteration-count direction fill-mode; */
+			animation: ${cartAnimation} 700ms cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+		}
+	}
+
+	span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: var(--boomerang);
+
+		padding: 0.5rem;
+		border-radius: 50%;
+		background: #fff;
+		width: 4rem;
+		height: 4rem;
+		margin-right: 1rem;
+
+		svg {
+			fill: var(--orange);
+			padding: 0;
+		}
 	}
 `;

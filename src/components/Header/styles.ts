@@ -31,7 +31,8 @@ export const WrapperHeader = styled.header`
 			align-items: center;
 			justify-content: center;
 			position: absolute;
-			right: 0;
+			top: -0.2rem;
+			right: 0.9rem;
 
 			width: 3rem;
 			height: 3rem;

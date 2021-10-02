@@ -1,4 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const trashShake = keyframes`
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(10deg);
+	}
+`;
 
 export const WrapperCardCheckout = styled.article`
 	display: grid;
@@ -71,6 +80,17 @@ export const WrapperCardCheckout = styled.article`
 		cursor: pointer;
 		justify-self: end;
 
+		/* padding: 1rem; */
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 100%;
+		transition: var(--boomerang);
+
+		&:hover {
+			/* animation: name duration timing-function delay iteration-count direction fill-mode; */
+			background-color: rgba(255, 255, 255, 1);
+			animation: ${trashShake} 0.1s alternate infinite;
+		}
 		& > svg {
 			fill: #444;
 		}
