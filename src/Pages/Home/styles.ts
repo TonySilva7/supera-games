@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import img from '../../assets/img/bg.png';
+import img from '../../assets/img/bg-home.jpg';
 
 export const WrapperMain = styled.main`
 	display: flex;
