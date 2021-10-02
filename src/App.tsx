@@ -1,12 +1,13 @@
 import React from 'react';
-import Checkout from './Pages/Checkout';
-import Home from './Pages/Home';
+import { BrowserRouter } from 'react-router-dom';
+import AllRoutes from './routes';
 
 function App() {
 	return (
 		<>
-			<Home />
-			<Checkout />
+			<BrowserRouter>
+				<AllRoutes />
+			</BrowserRouter>
 		</>
 	);
 }

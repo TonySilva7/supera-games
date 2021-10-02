@@ -17,11 +17,13 @@ export const WrapperHeader = styled.header`
 	background: linear-gradient(89.56deg, #a4a0a1 13%, #343434 100%);
 	/* background: linear-gradient(89.47deg, rgba(102, 115, 126, 0.49) 0%, rgba(52, 52, 52, 0.82) 100%); */
 
-	& > svg:nth-child(1) {
-		width: 18rem;
+	a:first-child {
+		& > svg:nth-child(1) {
+			width: 18rem;
+		}
 	}
 
-	div {
+	a:last-child {
 		display: flex;
 		position: relative;
 		width: 7rem;
