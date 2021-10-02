@@ -41,6 +41,12 @@ export const WrapperAside = styled.aside`
 		align-items: center;
 		height: 80%;
 
+		h1 {
+			color: var(--green);
+			margin-top: 1rem;
+			font-size: 1.7rem;
+		}
+
 		ul {
 			margin-top: 1rem;
 			li {

@@ -9,6 +9,7 @@ export default function Aside() {
 				<button>Login</button>
 			</header>
 			<footer>
+				<h1>Ordenar</h1>
 				<ul>
 					<li>
 						<input type='checkbox' /> Menor preço
