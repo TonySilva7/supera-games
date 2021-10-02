@@ -6,7 +6,7 @@ export const Wrapper = styled.article`
 
 	width: 23rem;
 	height: auto;
-	margin: 1rem;
+	margin: 2rem;
 
 	border-radius: 1.2rem;
 	background: rgba(255, 255, 255, 0.28);

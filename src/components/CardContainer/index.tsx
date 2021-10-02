@@ -1,7 +1,7 @@
 import CardProduct from '../CardProduct';
 import { Wrapper } from './styles';
 
-export default function ContainerProduct() {
+export default function CardContainer() {
 	return (
 		<Wrapper>
 			<CardProduct />
