@@ -1,3 +1,4 @@
+import Aside from '../../components/Aside';
 import ContainerProduct from '../../components/ContainerProduct';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -7,7 +8,10 @@ export default function Main() {
 	return (
 		<WrapperMain>
 			<Header />
-			<ContainerProduct />
+			<div>
+				<Aside />
+				<ContainerProduct />
+			</div>
 			<Footer />
 		</WrapperMain>
 	);

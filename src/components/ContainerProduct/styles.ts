@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.article`
+export const Wrapper = styled.section`
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
+	padding: 3rem;
 
 	width: 100%;
 	min-height: calc(100vh - 20rem);

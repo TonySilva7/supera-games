@@ -16,11 +16,12 @@ export const GlobalStyle = createGlobalStyle`
     --green-light: #ECF7EA;
     
     --brown-gradient: linear-gradient(175.16deg, rgba(184, 191, 167, 0.61) 0%, rgba(111, 89, 77, 0.71) 80.95%);
-    --gray-gradient: linear-gradient(128.61deg, rgba(192, 188, 185, 0.71) 6.15%, #232633 73.24%);
+    --gray-gradient: linear-gradient(128.61deg, rgba(192, 188, 185, 0.71) 6.15%, #232633 72%);
+  
+    --shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   }
   
   html {
-    background: darkgray;
     font-size: 62.5%;
     box-sizing: border-box;
     
@@ -40,6 +41,11 @@ export const GlobalStyle = createGlobalStyle`
 
     button {
       border: none;
+    }
+
+    input {
+      outline: none;
+			border: none;
     }
 
     code {

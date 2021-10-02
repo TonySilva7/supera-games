@@ -1,9 +1,18 @@
+import CardProduct from '../CardProduct';
 import { Wrapper } from './styles';
 
 export default function ContainerProduct() {
 	return (
 		<Wrapper>
-			<div>Products</div>
+			<CardProduct />
+			<CardProduct />
+			<CardProduct />
+			<CardProduct />
+			<CardProduct />
+			<CardProduct />
+			<CardProduct />
+			<CardProduct />
+			<CardProduct />
 		</Wrapper>
 	);
 }
