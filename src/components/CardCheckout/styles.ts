@@ -56,9 +56,14 @@ export const WrapperCardCheckout = styled.article`
 		width: 4rem;
 		border-radius: 50rem;
 		text-align: center;
-		box-shadow: inset var(--shadow);
+		/* box-shadow: inset var(--shadow); */
 		font-size: 1.7rem;
 		font-weight: bold;
+		transition: var(--boomerang);
+
+		&:hover {
+			box-shadow: inset var(--shadow);
+		}
 	}
 
 	button {

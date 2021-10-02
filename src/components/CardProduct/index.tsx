@@ -1,5 +1,5 @@
 import img from '../../assets/img/mortal-kombat-xl.png';
-import { Wrapper } from './styles';
+import { MyButton, Wrapper } from './styles';
 
 export default function CardProduct() {
 	return (
@@ -14,7 +14,7 @@ export default function CardProduct() {
 				<h2>R$ 249,90</h2>
 				<div>
 					<input type='text' placeholder='1' />
-					<button>Adicionar</button>
+					<MyButton>Adicionar</MyButton>
 				</div>
 			</footer>
 		</Wrapper>

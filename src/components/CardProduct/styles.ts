@@ -83,20 +83,47 @@ export const Wrapper = styled.article`
 				width: 4rem;
 				height: 4rem;
 				border-radius: 50%;
+				transition: var(--boomerang);
 			}
 
-			button {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-
-				cursor: pointer;
-				font-size: 1.8rem;
-				padding: 1rem 3.5rem;
-				border-radius: 50rem;
-				background-color: var(--blue);
-				color: var(--white);
+			input:hover {
+				box-shadow: inset var(--shadow);
+				box-shadow: inset var(--shadow);
 			}
 		}
+	}
+`;
+
+export const MyButton = styled.button`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+
+	cursor: pointer;
+	font-size: 1.8rem;
+	padding: 1rem 3.5rem;
+	border-radius: 50rem;
+	background-color: var(--blue);
+	color: var(--white);
+
+	transition: all 400ms ease;
+
+	&:before {
+		content: 'Adicionar';
+		position: absolute;
+		color: rgb(0, 0, 0, 0.5);
+		top: 0;
+		left: -13rem;
+		background: var(--green);
+		padding: 1rem 3.5rem;
+		border-radius: 50rem;
+
+		transition: var(--boomerang);
+	}
+
+	&:hover:before {
+		left: -1rem;
 	}
 `;

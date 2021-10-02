@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     
     --brown-gradient: linear-gradient(175.16deg, rgba(184, 191, 167, 0.61) 0%, rgba(111, 89, 77, 0.71) 80.95%);
     --gray-gradient: linear-gradient(128.61deg, rgba(192, 188, 185, 0.71) 6.15%, #232633 72%);
-  
+    --boomerang: all 400ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
     --shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   }
   
