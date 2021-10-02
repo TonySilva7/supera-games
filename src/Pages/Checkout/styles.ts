@@ -7,6 +7,7 @@ export const WrapperCheckout = styled.main`
 	align-items: center;
 	min-height: 100vh;
 	position: relative;
+
 	background: rgba(255, 255, 255, 0.5);
 
 	&::after {

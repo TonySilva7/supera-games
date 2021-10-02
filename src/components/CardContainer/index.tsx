@@ -1,18 +1,10 @@
-import CardProduct from '../CardProduct';
+// import CardProduct from '../CardProduct';
 import { Wrapper } from './styles';
 
-export default function CardContainer() {
-	return (
-		<Wrapper>
-			<CardProduct />
-			<CardProduct />
-			<CardProduct />
-			<CardProduct />
-			<CardProduct />
-			<CardProduct />
-			<CardProduct />
-			<CardProduct />
-			<CardProduct />
-		</Wrapper>
-	);
+interface PropsChildren {
+	children: React.ReactNode;
+}
+
+export default function CardContainer({ children }: PropsChildren) {
+	return <Wrapper>{children}</Wrapper>;
 }
