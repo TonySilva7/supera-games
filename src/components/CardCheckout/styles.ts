@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 
 export const WrapperCardCheckout = styled.article`
-	/* display: flex;
-	align-items: center;
-	justify-content: flex-start; */
 	display: grid;
-	grid-template-columns: 9rem 34rem 14rem 23rem 17rem 1fr;
+	grid-template-columns: 10% 30% 15% 15% 20% 10%;
 	grid-template-rows: 1fr;
-	column-gap: 0.5rem;
 	grid-template-areas: 'image title price quantity total button';
 	place-items: center center;
 	position: relative;
@@ -22,9 +18,11 @@ export const WrapperCardCheckout = styled.article`
 		rgba(250, 250, 250, 0.92) 1.02%,
 		rgba(245, 245, 245, 0.78) 97.89%
 	);
+	box-shadow: var(--shadow);
 
 	img {
 		grid-area: image;
+		justify-self: start;
 		width: 8rem;
 		height: 8rem;
 		border-radius: 50rem;
@@ -36,14 +34,12 @@ export const WrapperCardCheckout = styled.article`
 		color: var(--dark);
 		font-size: 1.8rem;
 		font-weight: 400;
-		justify-self: flex-start;
-		/* margin-left: 1rem; */
+		justify-self: start;
 	}
 
 	h3 {
 		grid-area: price;
 		font-size: 1.5rem;
-		/* margin-left: 20rem; */
 		color: #555;
 	}
 
@@ -51,7 +47,6 @@ export const WrapperCardCheckout = styled.article`
 		grid-area: total;
 		color: #f35c24;
 		font-size: 2rem;
-		/* margin-left: 20rem; */
 	}
 
 	input {
@@ -64,16 +59,12 @@ export const WrapperCardCheckout = styled.article`
 		box-shadow: inset var(--shadow);
 		font-size: 1.7rem;
 		font-weight: bold;
-		/* margin-left: 6rem; */
 	}
 
 	button {
 		grid-area: button;
-		display: flex;
-		align-self: center;
-		justify-self: flex-end;
-		/* margin-left: 6rem; */
 		cursor: pointer;
+		justify-self: end;
 
 		& > svg {
 			fill: #444;
@@ -82,15 +73,17 @@ export const WrapperCardCheckout = styled.article`
 `;
 
 export const InfoBarWrapper = styled.div`
-	/* display: flex; */
 	display: grid;
-	grid-template-columns: 9rem 35rem 14rem 23rem 17rem 1fr;
+	/* grid-template-columns: 9rem 35rem 14rem 23rem 17rem 1fr; */
+	grid-template-columns: 10% 30% 15% 15% 20% 10%;
 	grid-template-rows: 1fr;
 	grid-template-areas: 'product product price quantity total button';
 	place-items: center center;
 
+	/* column-gap: 0.5rem; */
+
 	margin-top: 1rem;
-	padding: 1rem;
+	padding: 1rem 2rem;
 	border-radius: 0.4rem;
 	min-width: 80vw;
 
@@ -102,6 +95,7 @@ export const InfoBarWrapper = styled.div`
 	}
 
 	& > small:first-child {
+		justify-self: start;
 		grid-area: product;
 	}
 
@@ -119,5 +113,6 @@ export const InfoBarWrapper = styled.div`
 
 	& > :last-child {
 		grid-area: button;
+		justify-self: end;
 	}
 `;

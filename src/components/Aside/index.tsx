@@ -12,13 +12,22 @@ export default function Aside() {
 				<h1>Ordenar</h1>
 				<ul>
 					<li>
-						<input type='checkbox' /> Menor preço
+						<span>
+							<input type='checkbox' />
+						</span>
+						Menor preço
 					</li>
 					<li>
-						<input type='checkbox' /> Mais populares
+						<span>
+							<input type='checkbox' />
+						</span>
+						Mais populares
 					</li>
 					<li>
-						<input type='checkbox' /> A-Z
+						<span>
+							<input type='checkbox' />
+						</span>
+						A-Z
 					</li>
 				</ul>
 			</footer>

@@ -8,7 +8,7 @@ export const WrapperFooter = styled.footer`
 	width: 100%;
 	height: 8rem;
 
-	background: rgba(255, 255, 255, 0.17);
+	background: rgba(255, 255, 255, 0.2);
 
 	small {
 		font-size: 1.5rem;
