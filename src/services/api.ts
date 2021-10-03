@@ -1,4 +1,4 @@
-export const baseURL: string = '../services/products.json';
+export const baseURL: string = '../api/products.json';
 
 const fetchGames = async (url: string) => {
 	const fullUrl = `${baseURL}`;

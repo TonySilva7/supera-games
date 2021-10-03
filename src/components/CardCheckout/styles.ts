@@ -16,6 +16,7 @@ export const WrapperCardCheckout = styled.article`
 	grid-template-areas: 'image title price quantity total button';
 	place-items: center center;
 	position: relative;
+	transition: var(--boomerang);
 
 	padding: 0 2rem;
 	min-width: 80vw;
@@ -28,6 +29,10 @@ export const WrapperCardCheckout = styled.article`
 		rgba(245, 245, 245, 0.78) 97.89%
 	);
 	box-shadow: var(--shadow);
+
+	&:hover {
+		transform: scale(1.02);
+	}
 
 	img {
 		grid-area: image;

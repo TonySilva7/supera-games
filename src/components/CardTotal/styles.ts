@@ -51,7 +51,6 @@ export const CardTotalWrapper = styled.div`
 			width: 100%;
 			height: 100%;
 			font-weight: normal;
-			border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 		}
 
 		h1 {
@@ -62,21 +61,24 @@ export const CardTotalWrapper = styled.div`
 			font-size: 2rem;
 			width: 100%;
 			height: 100%;
-			border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 		}
 
 		& > h2:nth-of-type(1) {
 			grid-area: ship;
+			border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 		}
 		& > h1:nth-of-type(1) {
 			grid-area: shipvalue;
+			border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 		}
 
 		& > h2:nth-of-type(2) {
 			grid-area: subtotal;
+			border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 		}
 		& > h1:nth-of-type(2) {
 			grid-area: subvalue;
+			border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 		}
 
 		& > h2:nth-of-type(3) {

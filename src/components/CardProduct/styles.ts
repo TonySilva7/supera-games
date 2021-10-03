@@ -7,17 +7,21 @@ export const Wrapper = styled.article`
 	width: 23rem;
 	height: auto;
 	margin: 2rem;
-
 	border-radius: 1.2rem;
 	background: rgba(255, 255, 255, 0.28);
 	box-shadow: var(--shadow);
+	transition: var(--boomerang);
+
+	&:hover {
+		transform: scale(1.04);
+	}
 
 	header {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 0.5rem;
-		/* border-radius: 1.2rem 1.2rem 0 0; */
+
 		div {
 			display: flex;
 
@@ -48,8 +52,6 @@ export const Wrapper = styled.article`
 		justify-content: space-evenly;
 
 		width: inherit;
-		/* height: 18rem; */
-
 		background: var(--gray-gradient);
 		border-radius: 0 0 1.2rem 1.2rem;
 
@@ -63,7 +65,7 @@ export const Wrapper = styled.article`
 		h2 {
 			color: var(--green);
 			font-size: 2.5rem;
-			padding: 1rem 0;
+			padding: 2.2rem 0;
 		}
 
 		div {
