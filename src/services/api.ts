@@ -1,11 +1,11 @@
-export const baseURL: string = '../api/products.json';
+export const baseURL: string = '/products.json';
 
 const fetchGames = async (url: string) => {
 	const fullUrl = `${baseURL}`;
 
 	const response = await fetch(fullUrl)
 		.then((res) => res.json())
-		.then((games) => games)
+		// .then((games) => games)
 		.catch((err) => console.log(err));
 
 	return response;
