@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import fetchGames from '../../services/api';
-import { IGamesState, IProduct } from '../../types';
+import { ICart, IGamesState, IItem, IProduct } from '../../types';
 
 const product: IProduct = {
 	id: 0,
@@ -9,6 +9,18 @@ const product: IProduct = {
 	price: 0.0,
 	score: 0,
 	image: '',
+};
+
+const item: IItem = {
+	id: 0,
+	product: product,
+	quantity: 0,
+	frete: 0.0,
+	total: 0.0,
+};
+
+const Cart: ICart = {
+	items: [],
 };
 
 const initialState: IGamesState = {
