@@ -1,7 +1,7 @@
 export const baseURL: string = '/products.json';
 
 const fetchGames = async (url: string) => {
-	const fullUrl = `${baseURL}`;
+	const fullUrl = url === baseURL ? baseURL : baseURL + url;
 
 	const response = await fetch(fullUrl)
 		.then((res) => res.json())

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { ReactComponent as Avatar } from '../../assets/img/avatar.svg';
-import { sortByName, sortByPrice, sortByScore } from '../../features/games/gamesSlice';
+import { getGames, sortByName, sortByPrice, sortByScore } from '../../features/games/gamesSlice';
+import { baseURL } from '../../services/api';
 import { WrapperAside } from './styles';
 
 export default function Aside() {
@@ -12,17 +13,29 @@ export default function Aside() {
 
 	function handleSortName() {
 		setIsCheckedName(!isCheckedName);
-		dispatch(sortByName(!isCheckedName));
+		if (!isCheckedName) {
+			dispatch(sortByName(!isCheckedName));
+		} else {
+			dispatch(getGames(baseURL));
+		}
 	}
 
 	function handleSortPrice() {
 		setIsCheckedPrice(!isCheckedPrice);
-		dispatch(sortByPrice(!isCheckedPrice));
+		if (!isCheckedPrice) {
+			dispatch(sortByPrice(!isCheckedPrice));
+		} else {
+			dispatch(getGames(baseURL));
+		}
 	}
 
 	function handleSortScore() {
 		setIsCheckedScore(!isCheckedScore);
-		dispatch(sortByScore(!isCheckedScore));
+		if (!isCheckedScore) {
+			dispatch(sortByScore(!isCheckedScore));
+		} else {
+			dispatch(getGames(baseURL));
+		}
 	}
 
 	return (
@@ -36,19 +49,39 @@ export default function Aside() {
 				<ul>
 					<li>
 						<span>
-							<input type='checkbox' checked={isCheckedPrice} onChange={() => handleSortPrice()} />
+							<input
+								type='checkbox'
+								checked={isCheckedPrice}
+								disabled={isCheckedScore || isCheckedName}
+								style={{ cursor: `${isCheckedScore || isCheckedName ? 'not-allowed' : 'pointer'}` }}
+								onChange={() => handleSortPrice()}
+							/>
 						</span>
 						Por preço
 					</li>
 					<li>
 						<span>
-							<input type='checkbox' checked={isCheckedScore} onChange={() => handleSortScore()} />
+							<input
+								type='checkbox'
+								checked={isCheckedScore}
+								disabled={isCheckedName || isCheckedPrice}
+								style={{ cursor: `${isCheckedName || isCheckedPrice ? 'not-allowed' : 'pointer'}` }}
+								onChange={() => handleSortScore()}
+							/>
 						</span>
 						Mais populares
 					</li>
 					<li>
 						<span>
-							<input type='checkbox' checked={isCheckedName} onChange={() => handleSortName()} />
+							<input
+								type='checkbox'
+								checked={isCheckedName}
+								disabled={isCheckedPrice || isCheckedScore}
+								style={{
+									cursor: `${isCheckedPrice || isCheckedScore ? 'not-allowed' : 'pointer'}`,
+								}}
+								onChange={() => handleSortName()}
+							/>
 						</span>
 						A-Z
 					</li>

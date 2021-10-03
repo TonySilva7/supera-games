@@ -43,27 +43,11 @@ export const gamesSlice = createSlice({
 
 		// sort games by name
 		sortByName: (state, action) => {
-			const temp = state.products;
-
 			if (action.payload) {
 				state.products.sort((a, b) => a.name.localeCompare(b.name));
-			} else {
-				state.products = temp;
-				// state.products.sort((a, b) => b.name.localeCompare(a.name));
 			}
 		},
 	},
-
-	// extraReducers: (builder) => {
-	// 	builder.addCase(getGames.fulfilled, (state, action: PayloadAction<any>) => {
-	// 		state.products = action.payload.products;
-	// 		state.status = 'ok';
-	// 	});
-
-	// 	builder.addCase(getGames.rejected, (state, action: PayloadAction<any>) => {
-	// 		state.status = 'error';
-	// 	});
-	// },
 
 	extraReducers: (builder) => {
 		builder.addCase(getGames.fulfilled, (state: IGamesState, action: PayloadAction<IProduct[]>) => {
