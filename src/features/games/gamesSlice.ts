@@ -14,20 +14,20 @@ import { IProduct } from '../../types';
 // ];
 
 interface IGamesState {
-	info: string;
+	status: 'ok' | 'loading' | 'error';
 	products: Array<IProduct>;
 }
 
 const product: IProduct = {
 	id: 0,
-	name: '...',
+	name: '',
 	price: 0.0,
 	score: 0,
 	image: '',
 };
 
 const initialState: IGamesState = {
-	info: '',
+	status: 'ok',
 	products: [product],
 };
 
@@ -46,14 +46,15 @@ export const gamesSlice = createSlice({
 	extraReducers: (builder) => {
 		builder.addCase(getGames.fulfilled, (state: IGamesState, action: PayloadAction<IProduct[]>) => {
 			state.products = action.payload;
-		});
-
-		builder.addCase(getGames.rejected, (state, action) => {
-			// console.log(action.error);
+			state.status = 'ok';
 		});
 
 		builder.addCase(getGames.pending, (state, action) => {
-			// console.log(action.meta.arg);
+			state.status = 'loading';
+		});
+
+		builder.addCase(getGames.rejected, (state, action) => {
+			state.status = 'error';
 		});
 	},
 });
