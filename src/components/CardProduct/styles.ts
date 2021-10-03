@@ -52,20 +52,23 @@ export const Wrapper = styled.article`
 		justify-content: space-evenly;
 
 		width: inherit;
+		padding: 0 0.7rem;
 		background: var(--gray-gradient);
 		border-radius: 0 0 1.2rem 1.2rem;
 
 		h1 {
 			margin-top: 2rem;
+			margin-bottom: 0.3rem;
 			color: var(--white);
 			font-size: 2rem;
 			font-weight: normal;
+			text-align: center;
 		}
 
 		h2 {
 			color: var(--green);
 			font-size: 2.5rem;
-			padding: 2.2rem 0;
+			padding: 1rem 0;
 		}
 
 		div {

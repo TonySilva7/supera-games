@@ -5,7 +5,6 @@ const fetchGames = async (url: string) => {
 
 	const response = await fetch(fullUrl)
 		.then((res) => res.json())
-		// .then((games) => games)
 		.catch((err) => console.log(err));
 
 	return response;

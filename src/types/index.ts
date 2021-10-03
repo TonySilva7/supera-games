@@ -5,3 +5,8 @@ export interface IProduct {
 	score: number;
 	image: string;
 }
+
+export interface IGamesState {
+	status: 'ok' | 'loading' | 'error';
+	products: Array<IProduct>;
+}

@@ -1,22 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import fetchGames from '../../services/api';
-import { IProduct } from '../../types';
-
-// const initialState: Array<IProduct> = [
-// 	{
-// 		id: 0,
-// 		name: '...',
-// 		price: 0.0,
-// 		score: 0,
-// 		image: '',
-// 	},
-// ];
-
-interface IGamesState {
-	status: 'ok' | 'loading' | 'error';
-	products: Array<IProduct>;
-}
+import { IGamesState, IProduct } from '../../types';
 
 const product: IProduct = {
 	id: 0,
@@ -41,7 +26,44 @@ export const gamesSlice = createSlice({
 	name: 'games',
 	initialState,
 
-	reducers: {},
+	reducers: {
+		// sort games by score
+		sortByScore: (state, action) => {
+			if (action.payload) {
+				state.products.sort((a, b) => b.score - a.score);
+			}
+		},
+
+		// sort games by price
+		sortByPrice: (state, action) => {
+			if (action.payload) {
+				state.products.sort((a, b) => a.price - b.price);
+			}
+		},
+
+		// sort games by name
+		sortByName: (state, action) => {
+			const temp = state.products;
+
+			if (action.payload) {
+				state.products.sort((a, b) => a.name.localeCompare(b.name));
+			} else {
+				state.products = temp;
+				// state.products.sort((a, b) => b.name.localeCompare(a.name));
+			}
+		},
+	},
+
+	// extraReducers: (builder) => {
+	// 	builder.addCase(getGames.fulfilled, (state, action: PayloadAction<any>) => {
+	// 		state.products = action.payload.products;
+	// 		state.status = 'ok';
+	// 	});
+
+	// 	builder.addCase(getGames.rejected, (state, action: PayloadAction<any>) => {
+	// 		state.status = 'error';
+	// 	});
+	// },
 
 	extraReducers: (builder) => {
 		builder.addCase(getGames.fulfilled, (state: IGamesState, action: PayloadAction<IProduct[]>) => {
@@ -59,7 +81,7 @@ export const gamesSlice = createSlice({
 	},
 });
 
-// export const {} = gamesSlice.actions;
+export const { sortByName, sortByPrice, sortByScore } = gamesSlice.actions;
 
 export const selectGames = (state: RootState) => state;
 
