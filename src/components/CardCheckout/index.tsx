@@ -1,6 +1,7 @@
 import { BaseSyntheticEvent, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeQuantity, removeFromCart, selectCart } from '../../features/games/gamesSlice';
 import { baseUrlImage } from '../../services/api';
@@ -24,7 +25,12 @@ export default function CardCheckout({ item }: { item: IItem }) {
 		dispatch(removeFromCart(id));
 
 		if (cart.items.length === 1) {
-			history.push('/');
+			toast.warning('Seu carrinho está vazio', {
+				position: toast.POSITION.TOP_CENTER,
+			});
+			setTimeout(() => {
+				history.push('/');
+			}, 3000);
 		}
 	}
 

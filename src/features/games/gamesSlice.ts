@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { RootState } from '../../app/store';
 import fetchGames from '../../services/api';
 import { ICart, IGamesState, IProduct } from '../../types';
@@ -94,6 +95,9 @@ export const gamesSlice = createSlice({
 			cart.items = items;
 			cart.total = items.reduce((acc, item) => acc + item.total, 0);
 			state.cart = cart;
+			toast.success('Item removido do carrinho', {
+				position: toast.POSITION.TOP_CENTER,
+			});
 		},
 
 		// musa a quantidade de um item no carrinho

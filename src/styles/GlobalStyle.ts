@@ -1,3 +1,4 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle` 
@@ -33,6 +34,26 @@ export const GlobalStyle = createGlobalStyle`
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
+    // ---
+    body .Toastify .Toastify__toast-container .Toastify__toast--success {
+      & .Toastify__progress-bar--success {
+        background-color: #92df7b;
+      }
+
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 1.7rem;
+      
+      svg {
+        fill: #92df7b;
+      }
+    }
+    
+    body .Toastify .Toastify__toast-container .Toastify__toast--warning {
+      font-size: 1.7rem;
+      /* background: #d73743; */
+    }
+    // ---
 
     ul {
       li {

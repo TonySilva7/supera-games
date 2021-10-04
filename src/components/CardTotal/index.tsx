@@ -1,5 +1,6 @@
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { checkout, selectCart, selectItens } from '../../features/games/gamesSlice';
 import { ICart, IItem } from '../../types';
@@ -17,9 +18,14 @@ export default function CardTotal({ cart }: { cart: ICart }) {
 	totalShipment = myCart.total > 250 ? 0 : totalShipment;
 
 	function handleCheckout() {
-		alert('Compra realizada com sucesso!');
 		dispatch(checkout());
-		history.push('/');
+		toast.success('Compra realizada com sucesso!', {
+			position: toast.POSITION.TOP_CENTER,
+		});
+
+		setTimeout(() => {
+			history.push('/');
+		}, 3000);
 	}
 
 	return (
