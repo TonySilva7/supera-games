@@ -18,7 +18,16 @@ export default function CardTotal({ cart }: { cart: ICart }) {
 	totalShipment = myCart.total > 250 ? 0 : totalShipment;
 
 	function handleCheckout() {
+		if (myCart.total === 0) {
+			toast.error('Seu carrinho está vazio');
+			setTimeout(() => {
+				history.push('/');
+			}, 3000);
+			return;
+		}
+
 		dispatch(checkout());
+
 		toast.success('Compra realizada com sucesso!', {
 			position: toast.POSITION.TOP_CENTER,
 		});

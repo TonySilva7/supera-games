@@ -81,7 +81,7 @@ export default function CardProduct({ product }: { product: IProduct }) {
 }
 
 const factoryStars = (score: number, id: number): JSX.Element[] => {
-	// receives a number and returns a array of stars
+	// Recebe um valor e retorna um array de estrelas
 	const stars: JSX.Element[] = [];
 	const color = '#f6f1c5';
 	const size = 13;
@@ -95,7 +95,7 @@ const factoryStars = (score: number, id: number): JSX.Element[] => {
 	return stars;
 };
 
-// make function to return a array of stars
+//  Cria coleção de estrelas
 const makeStarsCollection = (numStar: number, id: number): JSX.Element[] => {
 	const stars: JSX.Element[] = [];
 	for (let i = 0; i < numStar; i++) {

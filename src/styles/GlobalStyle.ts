@@ -52,6 +52,18 @@ export const GlobalStyle = createGlobalStyle`
     body .Toastify .Toastify__toast-container .Toastify__toast--warning {
       font-size: 1.7rem;
       /* background: #d73743; */
+      
+    }
+    
+    body .Toastify .Toastify__toast-container .Toastify__toast--error {
+      & .Toastify__progress-bar--error {
+        background-color: var(--orange);
+      }
+      font-size: 1.7rem;
+      svg {
+        fill: var(--orange);
+      }
+      /* background: var(--orange); */
     }
     // ---
 
