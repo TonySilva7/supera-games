@@ -91,12 +91,7 @@ export const gamesSlice = createSlice({
 
 			if (itemIndex === -1) return;
 
-			// items[itemIndex].quantity -= 1;
-			// items[itemIndex].total = items[itemIndex].product.price * items[itemIndex].quantity;
-
-			// if (items[itemIndex].quantity === 0) {
 			items.splice(itemIndex, 1);
-			// }
 
 			cart.items = items;
 			cart.total = items.reduce((acc, item) => acc + item.total, 0);

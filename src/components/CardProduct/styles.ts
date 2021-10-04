@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.article<{ isSelected: boolean }>`
 	display: flex;
@@ -107,7 +107,7 @@ export const Wrapper = styled.article<{ isSelected: boolean }>`
 	}
 `;
 
-export const MyButton = styled.button`
+export const MyButton = styled.button<{ isSelected: boolean }>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -124,14 +124,29 @@ export const MyButton = styled.button`
 
 	transition: all 400ms ease;
 
+	${({ isSelected }) =>
+		isSelected
+			? css`
+					&:before {
+						content: 'Remover';
+						background: var(--orange);
+						color: var(--white);
+					}
+			  `
+			: css`
+					&:before {
+						content: 'Adicionar';
+						background: rgb(226 237 255);
+						color: var(--blue);
+					}
+			  `}
+
 	&:before {
-		content: 'Adicionar';
 		position: absolute;
 
-		color: var(--blue);
 		top: 0;
 		left: -11rem;
-		background: rgb(226 237 255);
+		/* background: rgb(226 237 255); */
 		padding: 0.8rem 2.3rem;
 		border-radius: 50rem;
 		border: solid 2px rgb(160 198 255);

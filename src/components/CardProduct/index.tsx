@@ -60,7 +60,9 @@ export default function CardProduct({ product }: { product: IProduct }) {
 						value={quantity}
 						onChange={(e) => handleChangeQuantity(Number(e.target.value))}
 					/>
-					<MyButton onClick={() => handleAddToCart()}>Adicionar</MyButton>
+					<MyButton isSelected={isSelected} onClick={() => handleAddToCart()}>
+						{isSelected ? 'Remover' : 'Adicionar'}
+					</MyButton>
 				</div>
 			</footer>
 		</Wrapper>
