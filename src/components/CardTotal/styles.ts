@@ -90,6 +90,24 @@ export const CardTotalWrapper = styled.div`
 			color: var(--green);
 		}
 	}
+
+	@media (max-width: 768px) {
+		align-self: center;
+
+		div {
+			grid-template-columns: repeat(30%, 70%);
+			h2 {
+				font-size: 1.5rem;
+			}
+			h1 {
+				font-size: 1.9rem;
+			}
+
+			& > h1:nth-of-type(3) {
+				font-size: 2.2rem;
+			}
+		}
+	}
 `;
 
 export const MyButton = styled.button`

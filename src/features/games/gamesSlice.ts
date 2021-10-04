@@ -98,7 +98,6 @@ export const gamesSlice = createSlice({
 
 		// musa a quantidade de um item no carrinho
 		changeQuantity: (state, action) => {
-			debugger;
 			const { id, qnt } = action.payload;
 			if (qnt === 0) return;
 

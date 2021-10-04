@@ -29,7 +29,7 @@ export const Wrapper = styled.article<{ isSelected: boolean }>`
 		width: 100%;
 		height: 100%;
 
-		div {
+		& > div {
 			background: rgba(255, 255, 255, 0.8);
 			display: flex;
 			align-items: center;
@@ -41,7 +41,7 @@ export const Wrapper = styled.article<{ isSelected: boolean }>`
 			padding: 0.5rem;
 			border-radius: 1.2rem 1.2rem 0 0;
 
-			img {
+			& > img {
 				display: flex;
 				flex-shrink: 0;
 				/* min-width: 100%; */
@@ -64,7 +64,7 @@ export const Wrapper = styled.article<{ isSelected: boolean }>`
 		background: var(--gray-gradient);
 		border-radius: 0 0 1.2rem 1.2rem;
 
-		h1 {
+		& > h1 {
 			margin-top: 2rem;
 			margin-bottom: 0.3rem;
 			color: var(--white);
@@ -73,17 +73,17 @@ export const Wrapper = styled.article<{ isSelected: boolean }>`
 			text-align: center;
 		}
 
-		h2 {
+		& > h2 {
 			color: var(--green);
 			font-size: 2.5rem;
 			padding: 1rem 0;
 		}
 
-		div {
+		& > div {
 			display: flex;
 			margin-bottom: 2rem;
 
-			input {
+			& > input {
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -101,6 +101,26 @@ export const Wrapper = styled.article<{ isSelected: boolean }>`
 				&:hover {
 					box-shadow: inset var(--shadow);
 					box-shadow: inset var(--shadow);
+				}
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		max-width: 100%;
+
+		& > footer {
+			height: 21rem;
+
+			h2 {
+				padding: 0.5rem 0;
+			}
+
+			div {
+				padding: 0;
+
+				& > input {
+					margin-bottom: 0.8rem;
 				}
 			}
 		}

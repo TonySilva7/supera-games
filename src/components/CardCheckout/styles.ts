@@ -100,6 +100,36 @@ export const WrapperCardCheckout = styled.article`
 			fill: #444;
 		}
 	}
+
+	@media (max-width: 768px) {
+		grid-template-columns: 22% 24% 14% 30% 10%;
+		grid-template-areas: 'image price quantity total button';
+		padding: 0 0.8rem;
+
+		img {
+			height: 7rem;
+			width: 7rem;
+		}
+
+		h1 {
+			display: none;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+		}
+		h3 {
+			font-size: 1.2rem;
+		}
+
+		input {
+			transform: scale(0.8);
+		}
+
+		button {
+			transform: scale(0.8);
+		}
+	}
 `;
 
 export const InfoBarWrapper = styled.div`
@@ -144,5 +174,10 @@ export const InfoBarWrapper = styled.div`
 	& > :last-child {
 		grid-area: button;
 		justify-self: end;
+	}
+
+	@media (max-width: 768px) {
+		grid-template-columns: 20% 21% 30% 19% 10%;
+		grid-template-areas: 'product price quantity total button';
 	}
 `;

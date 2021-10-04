@@ -24,15 +24,14 @@ export const WrapperAside = styled.aside`
 		align-items: center;
 
 		width: 80%;
+		border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 
-		button {
+		& > button {
 			margin: 1rem 0;
 			color: var(--white);
 			background: none;
 			cursor: pointer;
 		}
-
-		border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 	}
 
 	& > footer {
@@ -41,13 +40,13 @@ export const WrapperAside = styled.aside`
 		align-items: center;
 		height: 80%;
 
-		h1 {
+		& > h1 {
 			color: var(--green);
 			margin-top: 1rem;
 			font-size: 1.7rem;
 		}
 
-		ul {
+		& > ul {
 			margin-top: 1rem;
 			li {
 				display: flex;
@@ -115,6 +114,54 @@ export const WrapperAside = styled.aside`
 					position: absolute;
 					top: 0.2rem;
 					left: 0.6rem;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		position: static;
+
+		width: 100%;
+		margin: 0;
+		max-height: 100%;
+
+		& > header {
+			display: none;
+		}
+
+		& > footer {
+			h1 {
+				margin: 0;
+			}
+
+			ul {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				min-width: 27rem;
+
+				li {
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					color: #e1e1e1;
+
+					span {
+						width: 2.9rem;
+						height: 2.9rem;
+
+						input[type='checkbox'] {
+							:before {
+								input[type='checkbox']:disabled:before {
+								}
+							}
+						}
+					}
 				}
 			}
 		}

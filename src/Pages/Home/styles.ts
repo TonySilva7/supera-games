@@ -21,4 +21,15 @@ export const WrapperMain = styled.main`
 		align-items: space-between;
 		justify-content: space-between;
 	}
+
+	@media (max-width: 768px) {
+		div {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			width: 100%;
+			padding: 1rem;
+		}
+	}
 `;
