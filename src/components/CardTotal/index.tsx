@@ -1,17 +1,26 @@
 import { MdAddShoppingCart } from 'react-icons/md';
-import { useAppSelector } from '../../app/hooks';
-import { selectCart, selectItens } from '../../features/games/gamesSlice';
+import { useHistory } from 'react-router';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { checkout, selectCart, selectItens } from '../../features/games/gamesSlice';
 import { ICart, IItem } from '../../types';
 import { CardTotalWrapper, MyButton } from './styles';
 
 export default function CardTotal({ cart }: { cart: ICart }) {
 	const shippingList: IItem[] = useAppSelector(selectItens);
 	const myCart: ICart = useAppSelector(selectCart);
+	const dispatch = useAppDispatch();
+	const history = useHistory();
 
 	let totalShipment = shippingList.reduce((acc, item) => acc + item.shipping, 0);
 	const temp = totalShipment;
 
 	totalShipment = myCart.total > 250 ? 0 : totalShipment;
+
+	function handleCheckout() {
+		alert('Compra realizada com sucesso!');
+		dispatch(checkout());
+		history.push('/');
+	}
 
 	return (
 		<CardTotalWrapper>
@@ -35,7 +44,7 @@ export default function CardTotal({ cart }: { cart: ICart }) {
 				</h1>
 			</div>
 
-			<MyButton>
+			<MyButton onClick={() => handleCheckout()}>
 				<p>Finalizar Compra</p>
 				<span>
 					<MdAddShoppingCart size={25} />

@@ -116,6 +116,15 @@ export const gamesSlice = createSlice({
 			state.cart = cart;
 		},
 
+		checkout: (state) => {
+			// lógica para pagamentos, etc...
+
+			const cart = state.cart;
+			cart.items = [];
+			cart.total = 0;
+			state.cart = cart;
+		},
+
 		// sort games by score
 		sortByScore: (state, action) => {
 			if (action.payload) {
@@ -155,8 +164,15 @@ export const gamesSlice = createSlice({
 	},
 });
 
-export const { sortByName, sortByPrice, sortByScore, addToCart, removeFromCart, changeQuantity } =
-	gamesSlice.actions;
+export const {
+	sortByName,
+	sortByPrice,
+	sortByScore,
+	addToCart,
+	removeFromCart,
+	changeQuantity,
+	checkout,
+} = gamesSlice.actions;
 
 export const selectGames = (state: RootState) => state;
 export const selectQntItens = (state: RootState) => state.games.cart.items.length;
