@@ -44,7 +44,6 @@ export const Wrapper = styled.article<{ isSelected: boolean }>`
 			& > img {
 				display: flex;
 				flex-shrink: 0;
-				/* min-width: 100%; */
 				min-height: 100%;
 				border-radius: 1.2rem 1.2rem 0 0;
 				opacity: 0.9;
@@ -138,7 +137,6 @@ export const MyButton = styled.button<{ isSelected: boolean }>`
 	font-size: 1.8rem;
 	padding: 1rem 3.5rem;
 	border-radius: 50rem;
-	/* background-color: var(--blue); */
 	background: linear-gradient(171deg, rgb(122 175 255), rgba(122, 175, 255, 0.8));
 	color: var(--white);
 
@@ -166,7 +164,6 @@ export const MyButton = styled.button<{ isSelected: boolean }>`
 
 		top: 0;
 		left: -11rem;
-		/* background: rgb(226 237 255); */
 		padding: 0.8rem 2.3rem;
 		border-radius: 50rem;
 		border: solid 2px rgb(160 198 255);

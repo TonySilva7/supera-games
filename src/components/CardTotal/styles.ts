@@ -162,7 +162,6 @@ export const MyButton = styled.button`
 
 	&:hover {
 		span {
-			/* animation: name duration timing-function delay iteration-count direction fill-mode; */
 			animation: ${cartAnimation} 700ms cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
 		}
 	}

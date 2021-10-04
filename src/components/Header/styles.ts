@@ -38,7 +38,6 @@ export const WrapperHeader = styled.header<{ hasItem: boolean }>`
 		pointer-events: ${({ hasItem }) => (hasItem ? 'visiblePainted' : 'none')};
 
 		&:hover {
-			/* animation: name duration timing-function delay iteration-count direction fill-mode; */
 			animation: ${animationCart} 300ms ease-in-out forwards;
 		}
 

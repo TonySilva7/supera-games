@@ -70,7 +70,6 @@ export const WrapperCardCheckout = styled.article`
 		width: 4rem;
 		border-radius: 50rem;
 		text-align: center;
-		/* box-shadow: inset var(--shadow); */
 		font-size: 1.7rem;
 		font-weight: bold;
 		transition: var(--boomerang);
@@ -85,14 +84,12 @@ export const WrapperCardCheckout = styled.article`
 		cursor: pointer;
 		justify-self: end;
 
-		/* padding: 1rem; */
 		width: 3.5rem;
 		height: 3.5rem;
 		border-radius: 100%;
 		transition: var(--boomerang);
 
 		&:hover {
-			/* animation: name duration timing-function delay iteration-count direction fill-mode; */
 			background-color: rgba(255, 255, 255, 1);
 			animation: ${trashShake} 0.1s alternate infinite;
 		}
@@ -134,13 +131,10 @@ export const WrapperCardCheckout = styled.article`
 
 export const InfoBarWrapper = styled.div`
 	display: grid;
-	/* grid-template-columns: 9rem 35rem 14rem 23rem 17rem 1fr; */
 	grid-template-columns: 10% 30% 15% 15% 20% 10%;
 	grid-template-rows: 1fr;
 	grid-template-areas: 'product product price quantity total button';
 	place-items: center center;
-
-	/* column-gap: 0.5rem; */
 
 	margin-top: 1rem;
 	padding: 1rem 2rem;
