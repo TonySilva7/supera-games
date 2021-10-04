@@ -11,7 +11,7 @@ export interface IItem {
 	id: number;
 	product: IProduct;
 	quantity: number;
-	ship: 0.0 | 10.0;
+	shipping: 0.0 | 10.0;
 	total: number;
 	isSelected: boolean;
 }

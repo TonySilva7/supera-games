@@ -29,7 +29,7 @@ export const CardTotalWrapper = styled.div`
 		grid-template-rows: repeat(3, 33.33%);
 		grid-template-columns: repeat(2, 50%);
 		grid-template-areas:
-			'ship shipvalue'
+			'shipping shipvalue'
 			'subtotal subvalue'
 			'total totalvalue';
 
@@ -64,7 +64,7 @@ export const CardTotalWrapper = styled.div`
 		}
 
 		& > h2:nth-of-type(1) {
-			grid-area: ship;
+			grid-area: shipping;
 			border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 		}
 		& > h1:nth-of-type(1) {

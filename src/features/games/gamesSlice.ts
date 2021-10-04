@@ -53,12 +53,14 @@ export const gamesSlice = createSlice({
 			const items = cart.items;
 			const itemIndex = items.findIndex((item) => item.id === id);
 
+			// verifica se o item já está no carrinho
 			if (itemIndex === -1) {
+				// monta o item
 				items.push({
 					id,
 					product: item,
 					quantity: quantity,
-					ship: 10.0,
+					shipping: 10.0,
 					total: item.price * quantity,
 					isSelected,
 				});
@@ -67,17 +69,12 @@ export const gamesSlice = createSlice({
 				items[itemIndex].total = items[itemIndex].product.price * items[itemIndex].quantity;
 			}
 
-			debugger;
-			const totalItem = items.reduce((acc, item) => acc + item.product.price, 0);
-			if (totalItem > 250.0) {
-				items.forEach((item) => {
-					item.ship = 0.0;
-				});
-			}
-			const myShip = items.reduce((acc, item) => acc + item.ship, 0);
-			cart.total = items.reduce((acc, item) => acc + item.total, 0) + myShip;
+			// Calcula total do carrinho
+			cart.total = items.reduce((acc, item) => acc + item.total, 0);
 
+			//add item ao carrinho
 			cart.items = items;
+			// atualiza o carrinho
 			state.cart = cart;
 		},
 
@@ -92,6 +89,27 @@ export const gamesSlice = createSlice({
 			if (itemIndex === -1) return;
 
 			items.splice(itemIndex, 1);
+
+			// atualiza lista de itens
+			cart.items = items;
+			cart.total = items.reduce((acc, item) => acc + item.total, 0);
+			state.cart = cart;
+		},
+
+		// musa a quantidade de um item no carrinho
+		changeQuantity: (state, action) => {
+			debugger;
+			const { id, qnt } = action.payload;
+			if (qnt === 0) return;
+
+			const cart = state.cart;
+			const items = cart.items;
+			const itemIndex = items.findIndex((item) => item.product.id === id);
+
+			if (itemIndex === -1) return;
+
+			items[itemIndex].quantity = qnt;
+			items[itemIndex].total = items[itemIndex].product.price * qnt;
 
 			cart.items = items;
 			cart.total = items.reduce((acc, item) => acc + item.total, 0);
@@ -137,7 +155,7 @@ export const gamesSlice = createSlice({
 	},
 });
 
-export const { sortByName, sortByPrice, sortByScore, addToCart, removeFromCart } =
+export const { sortByName, sortByPrice, sortByScore, addToCart, removeFromCart, changeQuantity } =
 	gamesSlice.actions;
 
 export const selectGames = (state: RootState) => state;
@@ -145,5 +163,6 @@ export const selectQntItens = (state: RootState) => state.games.cart.items.lengt
 export const selectIsSelectedItem = (state: RootState) =>
 	state.games.cart.items.filter((item) => item.isSelected);
 export const selectCart = (state: RootState) => state.games.cart;
+export const selectItens = (state: RootState) => state.games.cart.items;
 
 export default gamesSlice.reducer;

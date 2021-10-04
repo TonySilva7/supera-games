@@ -1,20 +1,40 @@
 import { MdAddShoppingCart } from 'react-icons/md';
+import { useAppSelector } from '../../app/hooks';
+import { selectCart, selectItens } from '../../features/games/gamesSlice';
+import { ICart, IItem } from '../../types';
 import { CardTotalWrapper, MyButton } from './styles';
 
-export default function CardTotal() {
+export default function CardTotal({ cart }: { cart: ICart }) {
+	const shippingList: IItem[] = useAppSelector(selectItens);
+	const myCart: ICart = useAppSelector(selectCart);
+
+	let totalShipment = shippingList.reduce((acc, item) => acc + item.shipping, 0);
+	const temp = totalShipment;
+
+	totalShipment = myCart.total > 250 ? 0 : totalShipment;
+
 	return (
 		<CardTotalWrapper>
 			<div>
 				<h2>Frete</h2>
-				<h1>R$ 20,00</h1>
+
+				{myCart.total > 250 ? (
+					<h1>
+						<s>R$ {temp.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</s>
+					</h1>
+				) : (
+					<h1>R$ {totalShipment.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</h1>
+				)}
 
 				<h2>Subtotal</h2>
-				<h1>R$ 369,90</h1>
+				<h1>R$ {myCart.total.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</h1>
 
 				<h2>Total</h2>
-				<h1>R$ 379,90</h1>
+				<h1>
+					R$ {(myCart.total + totalShipment).toLocaleString('pt-br', { minimumFractionDigits: 2 })}
+				</h1>
 			</div>
-			{/* <button>Finalizar Compra</button> */}
+
 			<MyButton>
 				<p>Finalizar Compra</p>
 				<span>

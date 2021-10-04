@@ -1,13 +1,23 @@
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addToCart, removeFromCart, selectIsSelectedItem } from '../../features/games/gamesSlice';
+import {
+	addToCart,
+	changeQuantity,
+	removeFromCart,
+	selectCart,
+	selectIsSelectedItem,
+} from '../../features/games/gamesSlice';
 import { baseUrlImage } from '../../services/api';
 import { IItem, IProduct } from '../../types';
 import { MyButton, Wrapper } from './styles';
 
 export default function CardProduct({ product }: { product: IProduct }) {
-	const [quantity, setQuantity] = useState<number>(1);
+	// find item from product id
+	const cart = useAppSelector(selectCart);
+	const item = cart.items.find((item) => item.id === product.id);
+
+	const [quantity, setQuantity] = useState<number>(item?.quantity || 1);
 	const [isSelectedItem, setIsSelectedItem] = useState<boolean>(false);
 	// const baseUrlImage = '/assets/img';
 	const dispatch = useAppDispatch();
@@ -27,17 +37,17 @@ export default function CardProduct({ product }: { product: IProduct }) {
 		}
 	}
 
-	function handleChangeQuantity(value: number) {
-		//valida o atributo value
-		if (Number.isNaN(value)) {
+	function handleChangeQuantity(qnt: number, id: number) {
+		//valida o atributo qnt
+		if (Number.isNaN(qnt)) {
 			setQuantity(1);
 			return;
 		}
-
-		if (value === 0) {
+		if (qnt === 0) {
 			setQuantity(1);
 		}
-		setQuantity(value);
+		setQuantity(qnt);
+		dispatch(changeQuantity({ id, qnt }));
 	}
 
 	return (
@@ -53,13 +63,13 @@ export default function CardProduct({ product }: { product: IProduct }) {
 
 				<span>{factoryStars(product.score, product.id)}</span>
 
-				<h2>R$ {product.price}</h2>
+				<h2>R$ {product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</h2>
 				<div>
 					<input
 						type='text'
 						name='card-product'
 						value={quantity}
-						onChange={(e) => handleChangeQuantity(Number(e.target.value))}
+						onChange={(e) => handleChangeQuantity(Number(e.target.value), product.id)}
 					/>
 					<MyButton isSelected={isSelected} onClick={() => handleAddToCart()}>
 						{isSelected ? 'Remover' : 'Adicionar'}
