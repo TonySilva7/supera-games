@@ -19,7 +19,7 @@ export const WrapperCardCheckout = styled.article`
 	transition: var(--boomerang);
 
 	padding: 0 2rem;
-	min-width: 80vw;
+	max-width: 80vw;
 	height: 10rem;
 	border-radius: 0.6rem;
 	margin-top: 1rem;
@@ -102,6 +102,7 @@ export const WrapperCardCheckout = styled.article`
 		grid-template-columns: 22% 24% 14% 30% 10%;
 		grid-template-areas: 'image price quantity total button';
 		padding: 0 0.8rem;
+		max-width: 100vw;
 
 		img {
 			height: 7rem;
@@ -139,7 +140,7 @@ export const InfoBarWrapper = styled.div`
 	margin-top: 1rem;
 	padding: 1rem 2rem;
 	border-radius: 0.4rem;
-	min-width: 80vw;
+	max-width: 80vw;
 
 	background-color: rgba(34, 34, 34, 0.8);
 
@@ -173,5 +174,6 @@ export const InfoBarWrapper = styled.div`
 	@media (max-width: 768px) {
 		grid-template-columns: 20% 21% 30% 19% 10%;
 		grid-template-areas: 'product price quantity total button';
+		max-width: 100vw;
 	}
 `;

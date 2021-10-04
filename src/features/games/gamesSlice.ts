@@ -154,7 +154,6 @@ export const gamesSlice = createSlice({
 		builder.addCase(getGames.fulfilled, (state: IGamesState, action: PayloadAction<IProduct[]>) => {
 			state.products = action.payload;
 			state.status = 'ok';
-			console.log(state);
 		});
 
 		builder.addCase(getGames.pending, (state, action) => {

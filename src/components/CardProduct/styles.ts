@@ -6,8 +6,8 @@ export const Wrapper = styled.article<{ isSelected: boolean }>`
 	align-items: center;
 	justify-content: space-between;
 
-	width: 25rem;
-	height: 46rem;
+	width: 24rem;
+	height: 45rem;
 	margin: 2rem;
 	box-sizing: border-box;
 	border: ${({ isSelected }) => (isSelected ? '2px solid var(--green)' : 'none')};
