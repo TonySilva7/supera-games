@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, removeFromCart, selectIsSelectedItem } from '../../features/games/gamesSlice';
+import { baseUrlImage } from '../../services/api';
 import { IItem, IProduct } from '../../types';
 import { MyButton, Wrapper } from './styles';
 
 export default function CardProduct({ product }: { product: IProduct }) {
 	const [quantity, setQuantity] = useState<number>(1);
 	const [isSelectedItem, setIsSelectedItem] = useState<boolean>(false);
-	const baseUrlImage = '/assets/img';
+	// const baseUrlImage = '/assets/img';
 	const dispatch = useAppDispatch();
 
 	const listItensSelected: IItem[] = useAppSelector(selectIsSelectedItem);

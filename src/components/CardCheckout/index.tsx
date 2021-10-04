@@ -1,19 +1,26 @@
+import { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
-import img from '../../assets/img/call-of-duty-wwii.png';
+import { useAppDispatch } from '../../app/hooks';
+import { removeFromCart } from '../../features/games/gamesSlice';
+import { baseUrlImage } from '../../services/api';
+import { IItem } from '../../types';
 import { InfoBarWrapper, WrapperCardCheckout } from './styles';
 
-export default function CardCheckout() {
+export default function CardCheckout({ item }: { item: IItem }) {
+	const [quantity, setQuantity] = useState(item.quantity);
+
+	const dispatch = useAppDispatch();
 	return (
 		<WrapperCardCheckout>
-			<img src={img} alt='' />
-			<h1>Call Of Duty WWII</h1>
+			<img src={`${baseUrlImage}/${item.product.image}`} alt='' />
+			<h1>{item.product.name}</h1>
 
-			<h3>R$ 249,90</h3>
+			<h3>R$ {item.product.price}</h3>
 
-			<input type='text' placeholder='1' />
-			<h2>R$ 249,90</h2>
+			<input type='text' value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
+			<h2>R$ {item.total}</h2>
 
-			<button>
+			<button onClick={() => dispatch(removeFromCart(item.id))}>
 				<FaTrashAlt size={20} />
 			</button>
 		</WrapperCardCheckout>

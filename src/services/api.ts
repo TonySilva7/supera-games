@@ -1,4 +1,5 @@
 export const baseURL: string = '/products.json';
+export const baseUrlImage = '/assets/img';
 
 const fetchGames = async (url: string) => {
 	const fullUrl = url === baseURL ? baseURL : baseURL + url;

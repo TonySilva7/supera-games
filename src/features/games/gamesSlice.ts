@@ -144,5 +144,6 @@ export const selectGames = (state: RootState) => state;
 export const selectQntItens = (state: RootState) => state.games.cart.items.length;
 export const selectIsSelectedItem = (state: RootState) =>
 	state.games.cart.items.filter((item) => item.isSelected);
+export const selectCart = (state: RootState) => state.games.cart;
 
 export default gamesSlice.reducer;
