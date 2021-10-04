@@ -96,7 +96,7 @@ export const gamesSlice = createSlice({
 			state.cart = cart;
 		},
 
-		// musa a quantidade de um item no carrinho
+		// muda a quantidade de um item no carrinho
 		changeQuantity: (state, action) => {
 			const { id, qnt } = action.payload;
 			if (qnt === 0) return;
@@ -124,21 +124,21 @@ export const gamesSlice = createSlice({
 			state.cart = cart;
 		},
 
-		// sort games by score
+		// ordena por score
 		sortByScore: (state, action) => {
 			if (action.payload) {
 				state.products.sort((a, b) => b.score - a.score);
 			}
 		},
 
-		// sort games by price
+		// ordena por price
 		sortByPrice: (state, action) => {
 			if (action.payload) {
 				state.products.sort((a, b) => a.price - b.price);
 			}
 		},
 
-		// sort games by name
+		// ordena por name
 		sortByName: (state, action) => {
 			if (action.payload) {
 				state.products.sort((a, b) => a.name.localeCompare(b.name));

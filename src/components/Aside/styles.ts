@@ -72,13 +72,11 @@ export const WrapperAside = styled.aside`
 					background-color: rgba(255, 255, 255, 0.09);
 				}
 
-				/* *********************** */
 				input[type='checkbox'] {
 					display: flex;
 					appearance: none;
 					position: relative;
 					cursor: pointer;
-					/* margin-right: 0.5rem; */
 				}
 
 				input[type='checkbox']:before {
