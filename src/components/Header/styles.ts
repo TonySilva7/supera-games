@@ -9,7 +9,7 @@ const animationCart = keyframes`
 	}
 `;
 
-export const WrapperHeader = styled.header`
+export const WrapperHeader = styled.header<{ hasItem: boolean }>`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -35,10 +35,10 @@ export const WrapperHeader = styled.header`
 		display: flex;
 		position: relative;
 		width: 7rem;
+		pointer-events: ${({ hasItem }) => (hasItem ? 'visiblePainted' : 'none')};
 
 		&:hover {
 			/* animation: name duration timing-function delay iteration-count direction fill-mode; */
-			/* animation: ${animationCart} 300ms reverse forwards; */
 			animation: ${animationCart} 300ms ease-in-out forwards;
 		}
 
@@ -60,6 +60,15 @@ export const WrapperHeader = styled.header`
 			border-radius: 50%;
 			background-color: var(--orange);
 			color: var(--white);
+			transform: ${({ hasItem }) => (hasItem ? 'scale(1.0)' : 'scale(0)')};
+			opacity: ${({ hasItem }) => (hasItem ? 1 : 0)};
+		}
+
+		svg {
+			transform: ${({ hasItem }) => (hasItem ? 'translateX(0)' : 'translateX(1rem)')};
+			opacity: ${({ hasItem }) => (hasItem ? 1 : 0.3)};
+			transition: var(--boomerang);
+			fill: var(--white);
 		}
 	}
 `;

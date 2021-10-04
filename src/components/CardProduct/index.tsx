@@ -1,11 +1,46 @@
+import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
-import { IProduct } from '../../types';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addToCart, removeFromCart, selectIsSelectedItem } from '../../features/games/gamesSlice';
+import { IItem, IProduct } from '../../types';
 import { MyButton, Wrapper } from './styles';
+
 export default function CardProduct({ product }: { product: IProduct }) {
+	const [quantity, setQuantity] = useState<number>(1);
+	const [isSelectedItem, setIsSelectedItem] = useState<boolean>(false);
 	const baseUrlImage = '/assets/img';
+	const dispatch = useAppDispatch();
+
+	const listItensSelected: IItem[] = useAppSelector(selectIsSelectedItem);
+	// Testa se o item já está selecionado
+	const isSelected = listItensSelected.some((it) => it.product.id === product.id);
+
+	function handleAddToCart() {
+		if (isSelected) {
+			dispatch(removeFromCart(product.id));
+			setIsSelectedItem(false);
+		} else {
+			const isSelected = !isSelectedItem;
+			setIsSelectedItem(isSelected);
+			dispatch(addToCart({ product, quantity, isSelected }));
+		}
+	}
+
+	function handleChangeQuantity(value: number) {
+		//valida o atributo value
+		if (Number.isNaN(value)) {
+			setQuantity(1);
+			return;
+		}
+
+		if (value === 0) {
+			setQuantity(1);
+		}
+		setQuantity(value);
+	}
 
 	return (
-		<Wrapper>
+		<Wrapper isSelected={isSelected}>
 			<header>
 				<div>
 					<img src={`${baseUrlImage}/${product.image}`} alt={product.name} />
@@ -19,8 +54,13 @@ export default function CardProduct({ product }: { product: IProduct }) {
 
 				<h2>R$ {product.price}</h2>
 				<div>
-					<input type='text' placeholder='1' />
-					<MyButton>Adicionar</MyButton>
+					<input
+						type='text'
+						name='card-product'
+						value={quantity}
+						onChange={(e) => handleChangeQuantity(Number(e.target.value))}
+					/>
+					<MyButton onClick={() => handleAddToCart()}>Adicionar</MyButton>
 				</div>
 			</footer>
 		</Wrapper>

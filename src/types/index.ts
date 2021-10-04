@@ -1,3 +1,4 @@
+//Produto
 export interface IProduct {
 	id: number;
 	name: string;
@@ -5,20 +6,25 @@ export interface IProduct {
 	score: number;
 	image: string;
 }
-
-export interface IGamesState {
-	status: 'ok' | 'loading' | 'error';
-	products: Array<IProduct>;
-}
-
+// Item com Produtos
 export interface IItem {
 	id: number;
 	product: IProduct;
 	quantity: number;
-	frete: 0.0 | 10.0;
+	ship: 0.0 | 10.0;
+	total: number;
+	isSelected: boolean;
+}
+
+// Carrinho com itens
+export interface ICart {
+	items: IItem[];
 	total: number;
 }
 
-export interface ICart {
-	items: Array<IItem>;
+// Estado Global
+export interface IGamesState {
+	status: 'ok' | 'loading' | 'error';
+	products: IProduct[];
+	cart: ICart;
 }

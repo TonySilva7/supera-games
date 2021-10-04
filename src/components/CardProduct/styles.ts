@@ -1,16 +1,21 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.article`
+export const Wrapper = styled.article<{ isSelected: boolean }>`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
 
-	width: 23rem;
-	height: auto;
+	width: 25rem;
+	height: 46rem;
 	margin: 2rem;
+	box-sizing: border-box;
+	border: ${({ isSelected }) => (isSelected ? '2px solid var(--green)' : 'none')};
 	border-radius: 1.2rem;
 	background: rgba(255, 255, 255, 0.28);
 	box-shadow: var(--shadow);
 	transition: var(--boomerang);
+	overflow: hidden;
 
 	&:hover {
 		transform: scale(1.04);
@@ -21,23 +26,25 @@ export const Wrapper = styled.article`
 		align-items: center;
 		justify-content: center;
 		padding: 0.5rem;
+		width: 100%;
+		height: 100%;
 
 		div {
+			background: rgba(255, 255, 255, 0.8);
 			display: flex;
-
 			align-items: center;
 			justify-content: center;
-			overflow: hidden;
 
-			width: 22rem;
-			height: 26rem;
+			overflow: hidden;
+			width: 100%;
+			height: 100%;
 			padding: 0.5rem;
 			border-radius: 1.2rem 1.2rem 0 0;
 
 			img {
 				display: flex;
 				flex-shrink: 0;
-				min-width: 100%;
+				/* min-width: 100%; */
 				min-height: 100%;
 				border-radius: 1.2rem 1.2rem 0 0;
 				opacity: 0.9;
@@ -51,7 +58,8 @@ export const Wrapper = styled.article`
 		align-items: center;
 		justify-content: space-evenly;
 
-		width: inherit;
+		width: 100%;
+		height: 19rem;
 		padding: 0 0.7rem;
 		background: var(--gray-gradient);
 		border-radius: 0 0 1.2rem 1.2rem;
