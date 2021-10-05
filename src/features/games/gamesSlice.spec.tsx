@@ -1,6 +1,9 @@
 import { ICart, IGamesState, IItem, IProduct } from '../../types';
 import reducerGames, {
 	addToCart,
+	changeQuantity,
+	checkout,
+	removeFromCart,
 	sortByName,
 	sortByPrice,
 	sortByScore,
@@ -104,7 +107,6 @@ describe('Games Reducer', () => {
 		expect(reducerGames(prevState, sortByName(false))).toEqual(prevState);
 	});
 
-	// should add item to cart
 	it('should add item1 to cart', () => {
 		const nextState = {
 			...prevState,
@@ -134,5 +136,84 @@ describe('Games Reducer', () => {
 		);
 
 		expect(games.cart.items.length).toBe(1);
+	});
+
+	it('should remove item2 from cart', () => {
+		const prevStateCart = {
+			...prevState,
+			cart: {
+				...cart,
+				items: [item1, item2, item3],
+			},
+		};
+
+		const nextState = {
+			...prevState,
+			cart: {
+				...cart,
+				items: [item1, item3],
+				total: 200.0,
+			},
+		};
+
+		expect(reducerGames(prevStateCart, removeFromCart(2))).toEqual(nextState);
+
+		let games: IGamesState = reducerGames(prevStateCart, removeFromCart(2));
+
+		expect(games.cart.items.length).toBe(2);
+	});
+
+	it('should add quantity 5 to item3', () => {
+		const prevStateCart = {
+			...prevState,
+			cart: {
+				...cart,
+				items: [item3],
+			},
+		};
+
+		const nextState = {
+			...prevState,
+			cart: {
+				...cart,
+				items: [
+					{
+						...item3,
+						quantity: 5,
+						total: 100 * 5,
+					},
+				],
+				total: 500,
+			},
+		};
+
+		expect(prevStateCart.cart.items[0].quantity).toBe(3);
+
+		expect(reducerGames(prevStateCart, changeQuantity({ id: 3, qnt: 5 }))).toEqual(
+			nextState
+		);
+	});
+
+	it('should doing checkout and clear cart', () => {
+		const prevStateCart = {
+			...prevState,
+			cart: {
+				...cart,
+				items: [item1, item2, item3],
+			},
+		};
+
+		const nextState = {
+			...prevState,
+			cart: {
+				...cart,
+				items: [],
+				total: 0,
+			},
+		};
+
+		expect(nextState.cart.items.length).toBe(0);
+
+		expect(reducerGames(prevStateCart, checkout())).toEqual(nextState);
 	});
 });
