@@ -18,7 +18,13 @@ export default function CardTotal({ cart }: { cart: ICart }) {
 	totalShipment = myCart.total > 250 ? 0 : totalShipment;
 
 	function handleCheckout() {
-		if (myCart.total === 0) {
+		const totalQuantityItems = myCart.items.reduce((acc, item) => acc + item.quantity, 0);
+		if (
+			myCart.total === 0 ||
+			totalQuantityItems === 0 ||
+			myCart.items.length === 0 ||
+			myCart.items === undefined
+		) {
 			toast.error('Seu carrinho está vazio');
 			setTimeout(() => {
 				history.push('/');
@@ -47,7 +53,9 @@ export default function CardTotal({ cart }: { cart: ICart }) {
 						<s>R$ {temp.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</s>
 					</h1>
 				) : (
-					<h1>R$ {totalShipment.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</h1>
+					<h1>
+						R$ {totalShipment.toLocaleString('pt-br', { minimumFractionDigits: 2 })}
+					</h1>
 				)}
 
 				<h2>Subtotal</h2>
@@ -55,7 +63,10 @@ export default function CardTotal({ cart }: { cart: ICart }) {
 
 				<h2>Total</h2>
 				<h1>
-					R$ {(myCart.total + totalShipment).toLocaleString('pt-br', { minimumFractionDigits: 2 })}
+					R${' '}
+					{(myCart.total + totalShipment).toLocaleString('pt-br', {
+						minimumFractionDigits: 2,
+					})}
 				</h1>
 			</div>
 

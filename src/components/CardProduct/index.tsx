@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { BaseSyntheticEvent, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
@@ -37,6 +37,17 @@ export default function CardProduct({ product }: { product: IProduct }) {
 		}
 	}
 
+	function validValue(event: BaseSyntheticEvent, id: number) {
+		const elem = event.target as HTMLInputElement;
+
+		if (quantity <= 0) {
+			setQuantity(1);
+			dispatch(changeQuantity({ id, qnt: 1 }));
+		}
+
+		elem.blur();
+	}
+
 	function handleChangeQuantity(qnt: number, id: number) {
 		//valida o atributo qnt
 		if (Number.isNaN(qnt)) {
@@ -70,6 +81,7 @@ export default function CardProduct({ product }: { product: IProduct }) {
 						name='card-product'
 						value={quantity}
 						onChange={(e) => handleChangeQuantity(Number(e.target.value), product.id)}
+						onMouseLeave={(e) => validValue(e, product.id)}
 					/>
 					<MyButton isSelected={isSelected} onClick={() => handleAddToCart()}>
 						{isSelected ? 'Remover' : 'Adicionar'}

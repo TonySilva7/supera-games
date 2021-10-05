@@ -120,6 +120,7 @@ export const gamesSlice = createSlice({
 			// lógica para pagamentos, etc...
 
 			if (state.cart.items.length === 0) return;
+			if (state.cart.total === 0) return;
 
 			const cart = state.cart;
 			cart.items = [];
