@@ -3,6 +3,7 @@ import reducerGames, {
 	addToCart,
 	changeQuantity,
 	checkout,
+	getGames,
 	removeFromCart,
 	sortByName,
 	sortByPrice,
@@ -215,5 +216,61 @@ describe('Games Reducer', () => {
 		expect(nextState.cart.items.length).toBe(0);
 
 		expect(reducerGames(prevStateCart, checkout())).toEqual(nextState);
+	});
+
+	it('should return "loading" when getGames is pending', () => {
+		const action = { type: getGames.pending.type };
+		const state = reducerGames(prevState, action);
+
+		expect(state).toEqual({
+			...prevState,
+			status: 'loading',
+		});
+	});
+
+	it('should return "ok" when getGames is success', () => {
+		const action = {
+			type: getGames.fulfilled.type,
+			payload: [product1, product2, product3],
+		};
+
+		const state = reducerGames(prevState, action);
+
+		expect(state).toEqual({
+			...prevState,
+			status: 'ok',
+			products: [product1, product2, product3],
+		});
+	});
+
+	it('should return "error" when getGames is rejected', () => {
+		const action = {
+			type: getGames.rejected.type,
+			payload: new Error('Error'),
+		};
+
+		const state = reducerGames(prevState, action);
+
+		expect(state).toEqual({
+			...prevState,
+			status: 'error',
+		});
+	});
+
+	it('should be an array with 3 items', () => {
+		const action = {
+			type: getGames.fulfilled.type,
+			payload: [product1, product2, product3],
+		};
+
+		const state = reducerGames(prevState, action);
+
+		expect(state).toEqual({
+			...prevState,
+			status: 'ok',
+			products: [product1, product2, product3],
+		});
+
+		expect(state.products.length).toBe(3);
 	});
 });
