@@ -9,14 +9,28 @@ const trashShake = keyframes`
 	}
 `;
 
-export const WrapperCardCheckout = styled.article`
+export const WrapperCardCheckout = styled.article<{
+	positionLeft: number;
+	positionRight: number;
+	isOver: boolean;
+}>`
 	display: grid;
 	grid-template-columns: 10% 30% 15% 15% 20% 10%;
 	grid-template-rows: 1fr;
 	grid-template-areas: 'image title price quantity total button';
 	place-items: center center;
 	position: relative;
-	transition: var(--boomerang);
+	filter: saturate(${({ isOver }) => (isOver ? '0.1' : '1')});
+	opacity: ${({ isOver }) => (isOver ? '0.7' : '1')};
+	transition: all 500ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+	&:nth-child(odd) {
+		transform: translateX(${({ positionLeft }) => positionLeft}rem);
+	}
+
+	&:nth-child(even) {
+		transform: translateX(${({ positionRight }) => positionRight}rem);
+	}
 
 	padding: 0 2rem;
 	max-width: 80vw;

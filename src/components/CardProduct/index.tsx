@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, useState } from 'react';
+import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
@@ -13,6 +13,13 @@ import { IItem, IProduct } from '../../types';
 import { MyButton, Wrapper } from './styles';
 
 export default function CardProduct({ product }: { product: IProduct }) {
+	// layout
+	const [size, setSize] = useState<number>(0.5);
+
+	useEffect(() => {
+		setSize(1);
+	}, []);
+
 	// find item from product id
 	const cart = useAppSelector(selectCart);
 	const item = cart.items.find((item) => item.id === product.id);
@@ -62,7 +69,7 @@ export default function CardProduct({ product }: { product: IProduct }) {
 	}
 
 	return (
-		<Wrapper isSelected={isSelected}>
+		<Wrapper isSelected={isSelected} size={size}>
 			<header>
 				<div>
 					<img src={`${baseUrlImage}/${product.image}`} alt={product.name} />

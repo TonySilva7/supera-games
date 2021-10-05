@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.article<{ isSelected: boolean }>`
+export const Wrapper = styled.article<{ isSelected: boolean; size: number }>`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
+
+	transform: scale(${({ size }) => size});
 
 	width: 24rem;
 	height: 45rem;

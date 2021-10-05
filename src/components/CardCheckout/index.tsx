@@ -1,4 +1,4 @@
-import { BaseSyntheticEvent, useState } from 'react';
+import { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useHistory } from 'react-router';
 import { toast } from 'react-toastify';
@@ -13,6 +13,17 @@ import { IItem } from '../../types';
 import { InfoBarWrapper, WrapperCardCheckout } from './styles';
 
 export default function CardCheckout({ item }: { item: IItem }) {
+	//layout
+	const [positionLeft, setPositionLeft] = useState<number>(-7);
+	const [positionRight, setPositionRight] = useState<number>(7);
+	const [isOver, setIsOver] = useState<boolean>(false);
+
+	useEffect(() => {
+		setPositionLeft(0);
+		setPositionRight(0);
+	}, []);
+
+	// functional
 	const dispatch = useAppDispatch();
 	const [quantity, setQuantity] = useState(item.quantity);
 	const history = useHistory();
@@ -58,7 +69,11 @@ export default function CardCheckout({ item }: { item: IItem }) {
 	}
 
 	return (
-		<WrapperCardCheckout>
+		<WrapperCardCheckout
+			positionLeft={positionLeft}
+			positionRight={positionRight}
+			isOver={isOver}
+		>
 			<img src={`${baseUrlImage}/${item.product.image}`} alt='' />
 			<h1>{item.product.name}</h1>
 
@@ -74,7 +89,11 @@ export default function CardCheckout({ item }: { item: IItem }) {
 			/>
 			<h2>R$ {item.total.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</h2>
 
-			<button onClick={() => handleRemove(item.id)}>
+			<button
+				onClick={() => handleRemove(item.id)}
+				onMouseEnter={() => setIsOver(true)}
+				onMouseLeave={() => setIsOver(false)}
+			>
 				<FaTrashAlt size={20} />
 			</button>
 		</WrapperCardCheckout>
