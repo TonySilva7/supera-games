@@ -76,7 +76,7 @@ const prevState: IGamesState = {
 };
 
 describe('Games Reducer', () => {
-	it('should order products by name', () => {
+	it('should sort products by name', () => {
 		const nextStatePrice = {
 			...prevState,
 			products: [product3, product1, product2],
@@ -85,7 +85,7 @@ describe('Games Reducer', () => {
 		expect(reducerGames(prevState, sortByName(true))).toEqual(nextStatePrice);
 	});
 
-	it('should order products by price', () => {
+	it('should sort products by price', () => {
 		const nextStatePrice = {
 			...prevState,
 			products: [product2, product1, product3],
@@ -94,7 +94,7 @@ describe('Games Reducer', () => {
 		expect(reducerGames(prevState, sortByPrice(true))).toEqual(nextStatePrice);
 	});
 
-	it('should order products by score', () => {
+	it('should sort products by score', () => {
 		const nextStatePrice = {
 			...prevState,
 			products: [product1, product3, product2],
