@@ -35,7 +35,7 @@ export const gamesSlice = createSlice({
 	reducers: {
 		// Adiciona um item ao carrinho
 		addToCart: (state, action) => {
-			const { id, name, price, score, image } = action.payload.product;
+			const { id, name, price, score, image }: IProduct = action.payload.product;
 			const { quantity } = action.payload;
 			const { isSelected } = action.payload;
 
@@ -66,7 +66,8 @@ export const gamesSlice = createSlice({
 				});
 			} else {
 				items[itemIndex].quantity += 1;
-				items[itemIndex].total = items[itemIndex].product.price * items[itemIndex].quantity;
+				items[itemIndex].total =
+					items[itemIndex].product.price * items[itemIndex].quantity;
 			}
 
 			// Calcula total do carrinho
@@ -149,10 +150,13 @@ export const gamesSlice = createSlice({
 	},
 
 	extraReducers: (builder) => {
-		builder.addCase(getGames.fulfilled, (state: IGamesState, action: PayloadAction<IProduct[]>) => {
-			state.products = action.payload;
-			state.status = 'ok';
-		});
+		builder.addCase(
+			getGames.fulfilled,
+			(state: IGamesState, action: PayloadAction<IProduct[]>) => {
+				state.products = action.payload;
+				state.status = 'ok';
+			}
+		);
 
 		builder.addCase(getGames.pending, (state, action) => {
 			state.status = 'loading';

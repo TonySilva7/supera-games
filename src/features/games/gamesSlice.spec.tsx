@@ -1,5 +1,10 @@
 import { ICart, IGamesState, IItem, IProduct } from '../../types';
-import reducerGames, { sortByName, sortByPrice, sortByScore } from './gamesSlice';
+import reducerGames, {
+	addToCart,
+	sortByName,
+	sortByPrice,
+	sortByScore,
+} from './gamesSlice';
 
 // Produtos
 const product1: IProduct = {
@@ -32,7 +37,7 @@ const item1: IItem = {
 	product: product1,
 	quantity: 2,
 	shipping: 10.0,
-	total: product1.price,
+	total: product1.price * 2,
 	isSelected: false,
 };
 
@@ -74,7 +79,6 @@ describe('Games Reducer', () => {
 			products: [product3, product1, product2],
 		};
 
-		// sintaxe: reducer(state, action)
 		expect(reducerGames(prevState, sortByName(true))).toEqual(nextStatePrice);
 	});
 
@@ -84,7 +88,6 @@ describe('Games Reducer', () => {
 			products: [product2, product1, product3],
 		};
 
-		// sintaxe: reducer(state, action)
 		expect(reducerGames(prevState, sortByPrice(true))).toEqual(nextStatePrice);
 	});
 
@@ -94,7 +97,42 @@ describe('Games Reducer', () => {
 			products: [product1, product3, product2],
 		};
 
-		// sintaxe: reducer(state, action)
 		expect(reducerGames(prevState, sortByScore(true))).toEqual(nextStatePrice);
+	});
+
+	it('should not sort products', () => {
+		expect(reducerGames(prevState, sortByName(false))).toEqual(prevState);
+	});
+
+	// should add item to cart
+	it('should add item1 to cart', () => {
+		const nextState = {
+			...prevState,
+			cart: {
+				...cart,
+				items: [
+					{
+						...item1,
+						isSelected: true,
+						total: 100.0,
+					},
+				],
+				total: 100.0,
+			},
+		};
+
+		expect(
+			reducerGames(
+				prevState,
+				addToCart({ product: product1, quantity: 2, isSelected: true })
+			)
+		).toEqual(nextState);
+
+		let games: IGamesState = reducerGames(
+			prevState,
+			addToCart({ product: product1, quantity: 2, isSelected: true })
+		);
+
+		expect(games.cart.items.length).toBe(1);
 	});
 });
