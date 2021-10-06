@@ -1,4 +1,14 @@
-import { ICart, IGamesState, IItem, IProduct } from '../../types';
+import { IGamesState } from '../../types';
+import {
+	cart,
+	item1,
+	item2,
+	item3,
+	prevState,
+	product1,
+	product2,
+	product3,
+} from '../../utils/mock/mockGames';
 import reducerGames, {
 	addToCart,
 	changeQuantity,
@@ -9,72 +19,6 @@ import reducerGames, {
 	sortByPrice,
 	sortByScore,
 } from './gamesSlice';
-
-// Produtos
-const product1: IProduct = {
-	id: 1,
-	name: 'Battle Field',
-	price: 50.0,
-	score: 5,
-	image: '',
-};
-
-const product2: IProduct = {
-	id: 2,
-	name: 'Clash Of Clans',
-	price: 25.0,
-	score: 2,
-	image: '',
-};
-
-const product3: IProduct = {
-	id: 3,
-	name: 'Ace Strike ',
-	price: 100.0,
-	score: 3,
-	image: '',
-};
-
-// Itens do carrinho
-const item1: IItem = {
-	id: 1,
-	product: product1,
-	quantity: 2,
-	shipping: 10.0,
-	total: product1.price * 2,
-	isSelected: false,
-};
-
-const item2: IItem = {
-	id: 2,
-	product: product2,
-	quantity: 1,
-	shipping: 10.0,
-	total: product2.price,
-	isSelected: false,
-};
-
-const item3: IItem = {
-	id: 3,
-	product: product3,
-	quantity: 3,
-	shipping: 10.0,
-	total: product3.price,
-	isSelected: false,
-};
-
-// Carrinho
-const cart: ICart = {
-	items: [],
-	total: 0.0,
-};
-
-// Estado Global
-const prevState: IGamesState = {
-	status: 'ok',
-	products: [product1, product2, product3],
-	cart: cart,
-};
 
 describe('Games Reducer', () => {
 	it('should sort products by name', () => {

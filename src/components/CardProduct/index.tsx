@@ -117,9 +117,9 @@ const factoryStars = (score: number, id: number): JSX.Element[] => {
 //  Cria coleção de estrelas
 const makeStarsCollection = (numStar: number, id: number): JSX.Element[] => {
 	const stars: JSX.Element[] = [];
-	for (let i = 0; i < numStar; i++) {
-		stars.push(<FaStar key={id * i} size={13} fill={'#f6f1c5'} />);
-	}
-
+	const arr = [...Array(numStar)].map((item, i) => (
+		<FaStar key={id * i} size={13} fill={'#f6f1c5'} />
+	));
+	stars.push(...arr);
 	return stars;
 };
