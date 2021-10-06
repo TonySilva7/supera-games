@@ -21,8 +21,59 @@ export const CardTotalWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-self: flex-end;
+	align-items: center;
 
 	margin-top: 2rem;
+
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		position: relative;
+
+		color: #ff7440;
+		text-decoration: none;
+		font-size: 1.6rem;
+		font-weight: bold;
+		width: 3rem;
+		margin-top: 1rem;
+		padding: 0.7rem;
+		background-color: rgba(255, 255, 255, 0.5);
+		border-radius: 50rem;
+		transition: var(--boomerang);
+		overflow: hidden;
+		box-shadow: var(--shadow);
+		transform: scale(1.2);
+
+		& > svg {
+			fill: #ff7440;
+		}
+
+		small {
+			transition: var(--boomerang);
+			transform: translateX(-16rem);
+			width: 14rem;
+			overflow: hidden;
+			position: absolute;
+		}
+
+		&:hover {
+			border-radius: 50rem;
+			padding: 0.7rem;
+			width: 16.7rem;
+
+			small {
+				transform: translateX(0);
+				top: 0.7rem;
+				left: 2.5rem;
+			}
+
+			svg {
+				margin-right: 0.5rem;
+				fill: #343434d4;
+			}
+		}
+	}
 
 	div {
 		display: grid;
@@ -93,6 +144,20 @@ export const CardTotalWrapper = styled.div`
 
 	@media (max-width: 768px) {
 		align-self: center;
+
+		a {
+			width: 17rem;
+
+			small {
+				transform: translateX(0);
+				top: 0.7rem;
+				left: 2.5rem;
+			}
+
+			svg {
+				fill: var(--dark);
+			}
+		}
 
 		div {
 			grid-template-columns: repeat(30%, 70%);

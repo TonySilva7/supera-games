@@ -1,5 +1,7 @@
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { checkout, selectCart, selectItens } from '../../features/games/gamesSlice';
@@ -69,6 +71,11 @@ export default function CardTotal({ cart }: { cart: ICart }) {
 					})}
 				</h1>
 			</div>
+
+			<Link to='/'>
+				<AiOutlinePlusCircle />
+				<small>Adicionar mais itens</small>
+			</Link>
 
 			<MyButton onClick={() => handleCheckout()}>
 				<p>Finalizar Compra</p>
